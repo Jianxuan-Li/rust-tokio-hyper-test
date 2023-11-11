@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hyper-test
+  labels:
+    app: hyper-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hyper-test
+  template:
+    metadata:
+      labels:
+        app: hyper-test
+    spec:
+      containers:
+        - name: hyper-test
+          image: freeyeti/hyper-test:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
